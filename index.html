@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hello test</title>
+<style>body{font:16px/1.6 system-ui,sans-serif;max-width:560px;margin:40px auto;padding:0 16px}
+li{margin:6px 0}.ok{color:#17977f;font-weight:700}.no{color:#d33a3a;font-weight:700}
+button{padding:8px 14px;border-radius:8px;border:1px solid #ccc;background:#fff;cursor:pointer}</style></head>
+<body>
+<h1>Hello, anonymous page</h1>
+<p>If you can see this as a styled page (not as source code), HTML rendering works.</p>
+<ul>
+<li>CSS: <span class="ok">styled (green and bold)</span></li>
+<li>JavaScript: <span id="js" class="no">not run</span></li>
+<li>Relative image: <img id="im" src="figures/test.png" alt="" width="60" height="30" style="vertical-align:middle"> <span id="imt" class="no">not loaded</span></li>
+<li>Relative link: <a href="second.html">second.html</a></li>
+</ul>
+<p><button id="b">Click me</button> <span id="bt"></span></p>
+<script>
+document.getElementById("js").textContent="running";document.getElementById("js").className="ok";
+var im=document.getElementById("im");function f(){var ok=im.complete&&im.naturalWidth>0;var t=document.getElementById("imt");t.textContent=ok?"loaded":"not loaded";t.className=ok?"ok":"no";}
+im.addEventListener("load",f);im.addEventListener("error",f);f();
+document.getElementById("b").onclick=function(){document.getElementById("bt").textContent="clicked, events work"};
+</script></body></html>
